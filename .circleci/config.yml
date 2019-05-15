@@ -8,13 +8,13 @@ workflows:
   pre-prod:
     jobs:
       - dev_build:
-         filters:
+          filters:
             branches:
               ignore: master
   prod:
     jobs:
       - build-publish:
-         filters:
+          filters:
             branches:
               only: master
 jobs:
