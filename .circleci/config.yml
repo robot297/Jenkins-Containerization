@@ -16,8 +16,10 @@ jobs:
       - run: yamllint .circleci/.
 
   build:
-    except:
-      - master
+    branches:
+      ignore:
+        - master
+
     docker:
       - image: csanchez/kaniko:latest
 
