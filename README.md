@@ -14,5 +14,5 @@ Project structured as follows.
 |-groovy
 |-jobs (ignored directory)
 |-Dockerfile
-|-plugins.txt
+|-plugins.txt (all plugins listed here)
 ```
