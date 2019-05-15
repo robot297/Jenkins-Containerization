@@ -17,11 +17,11 @@ jobs:
 
   build:
     docker:
-      - image: csanchez/kaniko:latest
+      - image: circleci/python:2.7.14
 
     steps:
       - checkout
 
       - run:
           name: Docker Build
-          command: executor --context ~/project --verbosity warn --no-push
+          command: docker build .
