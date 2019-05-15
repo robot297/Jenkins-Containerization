@@ -3,17 +3,17 @@ version: 2.1
 workflows:
   version: 2
   linting:
-   jobs:
+    jobs:
      - yaml-lint
   pre-prod:
-   jobs:
-      - dev_build:
+    jobs:
+     - dev_build:
           filters:
             branches:
               ignore: master
   prod:
-   jobs:
-      - build-publish:
+    jobs:
+     - build-publish:
           filters:
             branches:
               only: master
