@@ -1,16 +1,29 @@
-version: 2
-jobs:
+version: 2.1
+workflows:
+  version: 2
   build:
+    jobs:
+      - yaml-lint
+      - build
+jobs:
+  yaml-lint:
     docker:
-      - image: debian:stretch
+      - image: sdesbure/yamllint
+
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yamllint .circleci/.
+
+  build:
+    except:
+      - master
+    docker:
+      - image: csanchez/kaniko:latest
 
     steps:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
-      - run:
-          name: Print the Current Time
-          command: date
+          name: Docker Build
+          command: executor --context ~/project --verbosity warn --no-push
